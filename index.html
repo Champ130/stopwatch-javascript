@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StopWatch</title>
+    <style>
+        .main{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 5%;
+            font-size: 55px;
+            color: black;
+        }
+        .watch{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+        <div class="watch">
+            <h1 id="display">00.00.00</h1>
+            <button onclick="start()">Start</button>
+            <button onclick="pause()">Pause</button>
+            <button onclick="reset()">Reset</button>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+    <script>
+        var a=document.getElementById("display");
+        var t=null;
+        var h=0;
+        var m=0;
+        var s=0;
+
+        function fun1(){
+            s++
+            if(s==60){
+                s=0;
+                m++
+                if(m==60){
+                    m=0;
+                    h++;
+                }
+            }
+
+            //ternary operators
+            x=h<10 ? "0"+h:h;
+            y=m<10 ? "0"+m:m;
+            z=s<10 ? "0"+s:s;
+            a.innerHTML=x+":"+y+":"+z
+            
+        }
+
+
+        function start(){
+            if(t!=null){
+                clearInterval(t)
+            }
+
+        t=setInterval(fun1,600)
+
+        }
+
+
+        function pause(){
+            clearInterval(t)
+        }
+        function reset(){
+            clearInterval(t)
+            a.innerHTML="00.00.00"
+            h=0;
+            m=0;
+            s=0;
+        }
+    </script>
+</body>
+</html>
